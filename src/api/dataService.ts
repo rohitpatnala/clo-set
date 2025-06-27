@@ -10,6 +10,13 @@ interface RawItem {
   pricingOption: number;  // 0 = paid, 1 = free, 2 = viewOnly
   imagePath: string;
   price?: number;
+  views?: number; 
+  likes?: number;  
+}
+
+/** return a random integer between min and max inclusive */
+function randomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function mapRawToItem(raw: RawItem): Item {
@@ -27,6 +34,8 @@ function mapRawToItem(raw: RawItem): Item {
     pricing,
     price: raw.price,
     imageUrl: raw.imagePath,
+    views: randomInt(20, 500),   // add a random view count
+    likes: randomInt(10, 180),   // add a random like count
   };
 }
 

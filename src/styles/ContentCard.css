@@ -1,22 +1,16 @@
-/* src/components/ContentCard.css */
-
 /* Card wrapper */
 .content-card {
     position: relative;
-    /* needed for the pseudo-element */
     overflow: hidden;
-    /* clip the shine */
     background: var(--card-bg);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    transition:
-        transform 0.2s ease-in-out,
-        box-shadow 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-/* Lift + deeper shadow on hover */
+/* Lift & deepen shadow on hover */
 .content-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
@@ -30,35 +24,29 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* a subtle angled white-to-transparent gradient */
-    background: linear-gradient(120deg,
-            rgba(255, 255, 255, 0.25) 0%,
-            rgba(255, 255, 255, 0) 60%);
-    /* start off bottom-left, skewed for angle */
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);
     transform: translate(-100%, 100%) skewX(-25deg);
-    /* only move the transform on hover */
     transition: transform 0.6s ease-in-out;
     pointer-events: none;
     z-index: 1;
-    /* under the cart button and content */
 }
 
-/* On hover, sweep it to top-right */
+/* Sweep the shine under content */
 .content-card:hover::after {
     transform: translate(100%, -100%) skewX(-25deg);
 }
 
-/* IMAGE WRAPPER */
+/* Image wrapper (4:3) */
 .content-card__img-wrap {
     position: relative;
     width: 100%;
     padding-top: 75%;
-    /* 4:3 ratio */
     background: #222;
 }
 
-/* IMAGE */
-.content-card__img {
+/* Image & placeholder */
+.content-card__img,
+.content-card__img-placeholder {
     position: absolute;
     top: 0;
     left: 0;
@@ -67,26 +55,20 @@
     object-fit: cover;
 }
 
-/* PLACEHOLDER */
 .content-card__img-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background: #333;
 }
 
-/* CART BUTTON */
+/* Cart button */
 .content-card__cart-btn {
     position: absolute;
     top: 8px;
     right: 8px;
     width: 32px;
     height: 32px;
+    background: rgba(0, 0, 0, 0.6);
     border: none;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.6);
     color: var(--fg);
     display: flex;
     align-items: center;
@@ -94,43 +76,70 @@
     cursor: pointer;
     transition: background 0.2s;
     z-index: 2;
-    /* above the shine */
 }
 
 .content-card__cart-btn:hover {
     background: rgba(0, 0, 0, 0.8);
 }
 
-/* BODY */
+/* Body */
 .content-card__body {
     padding: 12px 16px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
     z-index: 2;
-    /* above the shine */
 }
 
-/* CREATOR */
+/* Creator */
 .content-card__creator {
     font-size: 0.75rem;
     color: var(--muted);
-    margin: 0 0 4px;
+    margin: 0;
     text-transform: lowercase;
 }
 
-/* TITLE */
+/* Title & Price */
+.content-card__title-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+}
+
 .content-card__title {
+    flex: 1 1 auto;
     font-size: 0.875rem;
     color: var(--fg);
     font-weight: 600;
-    margin: 0 0 8px;
+    margin: 0;
     line-height: 1.2;
 }
 
-/* PRICE */
 .content-card__price {
+    flex: 0 0 auto;
     font-size: 1rem;
     font-weight: 700;
     color: var(--fg);
     margin: 0;
+}
+
+/* Meta (views & likes) */
+.content-card__meta {
+    display: flex;
+    gap: 16px;
+}
+
+.content-card__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.content-card__meta-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
 }
