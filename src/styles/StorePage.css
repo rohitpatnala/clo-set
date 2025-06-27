@@ -1,3 +1,6 @@
+/*————————————————————————————————————————————————————————————————————————————
+  Hero Section & Hover Shine‐in‐Text
+————————————————————————————————————————————————————————————————————————————*/
 .hero {
     padding: 48px 16px 24px;
     text-align: center;
@@ -9,6 +12,13 @@
     font-size: 2.25rem;
     font-weight: 700;
     line-height: 1.2;
+    color: #fff;
+    /* prepare for hover gradient‐clip */
+    transition: none;
+}
+
+.hero__title:hover {
+    /* apply a moving white gradient clipped to the text */
     background: linear-gradient(90deg,
             rgba(255, 255, 255, 0.1) 25%,
             rgba(255, 255, 255, 0.8) 50%,
@@ -17,12 +27,11 @@
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: shine 1.5s ease-in-out forwards;
+    animation: hover-shine 1s ease-in-out forwards;
 }
 
-/* Keyframes to sweep shine and then switch to solid white */
-@keyframes shine {
-    0% {
+@keyframes hover-shine {
+    from {
         background-position: -100% 0;
     }
 
@@ -30,13 +39,16 @@
         background-position: 100% 0;
     }
 
-    100% {
+    to {
+        /* once done, remove gradient and restore solid white text */
         background-image: none;
         color: #fff;
     }
 }
 
-/* Category tabs */
+/*————————————————————————————————————————————————————————————————————————————
+    Category Tabs & Underline Hover
+  ————————————————————————————————————————————————————————————————————————————*/
 .categories {
     display: flex;
     gap: 12px;
@@ -45,6 +57,8 @@
 }
 
 .cat-tab {
+    position: relative;
+    overflow: hidden;
     background: var(--card);
     color: var(--fg);
     border: none;
@@ -52,6 +66,26 @@
     border-radius: 9999px;
     cursor: pointer;
     font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.cat-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.cat-tab:hover {
+    color: var(--accent);
+}
+
+.cat-tab:hover::after {
+    width: 100%;
 }
 
 .cat-tab--active {
@@ -60,15 +94,19 @@
     font-weight: 600;
 }
 
-/* Search bar wrapper */
+/*————————————————————————————————————————————————————————————————————————————
+    Search Section
+  ————————————————————————————————————————————————————————————————————————————*/
 .search-section {
     display: flex;
     justify-content: center;
-    margin: 0 auto var(--space-lg, 24px);
     width: 100%;
+    margin: 0 auto var(--space-lg, 24px);
 }
 
-/* Filter section */
+/*————————————————————————————————————————————————————————————————————————————
+    Filter Section
+  ————————————————————————————————————————————————————————————————————————————*/
 .filter-section {
     background: var(--card);
     padding: 16px;
@@ -76,7 +114,6 @@
     margin-bottom: 24px;
 }
 
-/* Filter bar layout */
 .filter-bar {
     display: flex;
     flex-wrap: wrap;
@@ -84,6 +121,9 @@
     align-items: center;
 }
 
+/*————————————————————————————————————————————————————————————————————————————
+    Content Grid Section
+  ————————————————————————————————————————————————————————————————————————————*/
 .grid-section {
     margin-bottom: 48px;
 }
