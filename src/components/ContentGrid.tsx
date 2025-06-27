@@ -1,6 +1,6 @@
 import React from "react";
 import ContentCard, { Item } from "./ContentCard";
-import "../styles/Contentgrid.css";
+import "../styles/ContentGrid.css";
 
 interface ContentGridProps {
   items: Item[];
