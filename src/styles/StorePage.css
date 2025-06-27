@@ -4,12 +4,39 @@
 }
 
 .hero__title {
-    color: #fff;
+    position: relative;
+    display: inline-block;
     font-size: 2.25rem;
     font-weight: 700;
     line-height: 1.2;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(255, 255, 255, 0.1) 75%);
+    background-size: 200% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 1.5s ease-in-out forwards;
 }
 
+/* Keyframes to sweep shine and then switch to solid white */
+@keyframes shine {
+    0% {
+        background-position: -100% 0;
+    }
+
+    80% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-image: none;
+        color: #fff;
+    }
+}
+
+/* Category tabs */
 .categories {
     display: flex;
     gap: 12px;
@@ -33,6 +60,7 @@
     font-weight: 600;
 }
 
+/* Search bar wrapper */
 .search-section {
     display: flex;
     justify-content: center;
@@ -40,27 +68,7 @@
     width: 100%;
 }
 
-.keyword-search__input {
-    width: 100%;
-    max-width: 800px;
-    padding: 10px 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--muted);
-    border-radius: 9999px;
-    color: var(--fg);
-    font-size: 1rem;
-}
-
-.keyword-search__input::placeholder {
-    color: var(--muted);
-}
-
-.keyword-search__input:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 2px var(--accent);
-}
-
+/* Filter section */
 .filter-section {
     background: var(--card);
     padding: 16px;
@@ -68,6 +76,7 @@
     margin-bottom: 24px;
 }
 
+/* Filter bar layout */
 .filter-bar {
     display: flex;
     flex-wrap: wrap;
