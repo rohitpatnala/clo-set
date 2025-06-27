@@ -1,0 +1,21 @@
+.pricing-filter {
+    display: flex;
+    gap: 16px;
+}
+
+.pricing-filter__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.pricing-filter__checkbox {
+    width: 16px;
+    height: 16px;
+}
+
+.pricing-filter__text {
+    user-select: none;
+}

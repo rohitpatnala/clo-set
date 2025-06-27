@@ -1,0 +1,20 @@
+.reset-button {
+    margin-left: auto;
+    padding: 8px 16px;
+    background-color: #e2e8f0;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #2d3748;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.reset-button:hover {
+    background-color: #cbd5e0;
+}
+
+.reset-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
+}
