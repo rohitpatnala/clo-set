@@ -4,9 +4,21 @@ import "../styles/ContentGrid.css";
 
 interface ContentGridProps {
   items: Item[];
+  loading?: boolean;
 }
 
-const ContentGrid: React.FC<ContentGridProps> = ({ items }) => {
+const ContentGrid: React.FC<ContentGridProps> = ({
+  items,
+  loading = false,
+}) => {
+  if (loading) {
+    return (
+      <div className="content-grid__spinner-container">
+        <div className="content-grid__spinner" />
+      </div>
+    );
+  }
+
   if (!items.length) {
     return <p className="content-grid__empty">No items to display.</p>;
   }

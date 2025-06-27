@@ -26,6 +26,14 @@ const StorePage: React.FC = () => {
   const [allItems, setAllItems] = useState<Item[]>([]);
   const [activeCat, setActiveCat] = useState<string>("All");
 
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    getAllItems()
+      .then((data) => setAllItems(data))
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
+  }, []);
+
   // Fetch data once on mount
   useEffect(() => {
     getAllItems()
@@ -113,7 +121,7 @@ const StorePage: React.FC = () => {
 
       <section className="grid-section container">
         <InfiniteScroller hasMore={hasMore} loadMore={loadMore}>
-          <ContentGrid items={filteredItems} />
+          <ContentGrid items={filteredItems} loading={isLoading} />
         </InfiniteScroller>
       </section>
     </>
