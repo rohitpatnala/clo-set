@@ -1,7 +1,13 @@
+/* src/components/ContentCard.css */
+
+/* Card wrapper */
 .content-card {
+    position: relative;
+    /* needed for the pseudo-element */
+    overflow: hidden;
+    /* clip the shine */
     background: var(--card-bg);
     border-radius: 8px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -10,19 +16,48 @@
         box-shadow 0.2s ease-in-out;
 }
 
+/* Lift + deeper shadow on hover */
 .content-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
 }
 
+/* Shine overlay */
+.content-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* a subtle angled white-to-transparent gradient */
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0) 60%);
+    /* start off bottom-left, skewed for angle */
+    transform: translate(-100%, 100%) skewX(-25deg);
+    /* only move the transform on hover */
+    transition: transform 0.6s ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+    /* under the cart button and content */
+}
+
+/* On hover, sweep it to top-right */
+.content-card:hover::after {
+    transform: translate(100%, -100%) skewX(-25deg);
+}
+
+/* IMAGE WRAPPER */
 .content-card__img-wrap {
     position: relative;
     width: 100%;
     padding-top: 75%;
+    /* 4:3 ratio */
     background: #222;
 }
 
-/* ACTUAL IMAGE */
+/* IMAGE */
 .content-card__img {
     position: absolute;
     top: 0;
@@ -42,7 +77,7 @@
     background: #333;
 }
 
-/* CART BUTTON OVERLAY */
+/* CART BUTTON */
 .content-card__cart-btn {
     position: absolute;
     top: 8px;
@@ -58,6 +93,8 @@
     justify-content: center;
     cursor: pointer;
     transition: background 0.2s;
+    z-index: 2;
+    /* above the shine */
 }
 
 .content-card__cart-btn:hover {
@@ -69,6 +106,8 @@
     padding: 12px 16px;
     display: flex;
     flex-direction: column;
+    z-index: 2;
+    /* above the shine */
 }
 
 /* CREATOR */

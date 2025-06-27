@@ -16,7 +16,7 @@ export default function KeywordSearch() {
 
   return (
     <div className="keyword-search">
-      {/* Magnifying glass icon */}
+      {/* Magnifying glass icon (SVG)*/}
       <svg
         className="keyword-search__icon"
         viewBox="0 0 24 24"
@@ -33,7 +33,7 @@ export default function KeywordSearch() {
         className="keyword-search__input"
         value={localTerm}
         onChange={(e) => setLocalTerm(e.target.value)}
-        placeholder="Find the items you’re looking for"
+        placeholder="Find the items you’re looking for..."
       />
     </div>
   );
