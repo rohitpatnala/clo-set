@@ -31,6 +31,9 @@ const ContentCard: React.FC<ContentCardProps> = ({ item }) => {
             src={item.imageUrl}
             alt={item.title}
             className="content-card__img"
+            loading="lazy"
+            width={400}
+            height={300}
           />
         ) : (
           <div className="content-card__img-placeholder" />
