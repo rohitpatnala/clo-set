@@ -13,14 +13,13 @@
     width: 20px;
     height: 20px;
     color: var(--muted);
-
 }
 
 .keyword-search__input {
     width: 100%;
     padding: 12px 16px 12px 48px !important;
     background: var(--card-bg);
-    border: 1px solid var(--muted);
+    border: 1px solid var(--bg) !important;
     border-radius: 9999px;
     color: var(--fg);
     font-size: 1rem;
