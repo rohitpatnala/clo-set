@@ -14,6 +14,7 @@
 .pricing-filter__checkbox {
     width: 16px;
     height: 16px;
+    border-radius: 10px;
 }
 
 .pricing-filter__text {
