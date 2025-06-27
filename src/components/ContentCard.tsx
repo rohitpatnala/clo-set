@@ -64,8 +64,8 @@ const ContentCard: React.FC<ContentCardProps> = ({ item }) => {
 
       {/* text info */}
       <div className="content-card__body">
-        <p className="content-card__creator">{item.userName}</p>
         <p className="content-card__title">{item.title}</p>
+        <p className="content-card__creator">{item.userName}</p>
         <p className="content-card__price">{priceLabel}</p>
       </div>
     </div>

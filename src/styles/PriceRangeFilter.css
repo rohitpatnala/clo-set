@@ -13,21 +13,22 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 24px;
+    bottom: 28px;
     pointer-events: none;
     -webkit-appearance: none;
-    height: 4px;
+    appearance: none;
+    height: 6px;
     background: lightseagreen;
 }
 
 .slider::-webkit-slider-thumb {
     pointer-events: all;
     -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid var(--fg);
+    background: lightseagreen;
+    border: 2px solid lightseagreen;
     cursor: pointer;
 }
 
@@ -43,7 +44,7 @@
 }
 
 .price-range-filter__values {
-    margin-top: 32px;
+    margin-top: 48px;
     display: flex;
-    gap: 4px;
+    gap: 8px;
 }

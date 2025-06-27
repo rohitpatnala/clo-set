@@ -1,15 +1,20 @@
 .navbar {
     display: flex;
     align-items: center;
-    padding: 12px 16px;
-    background: var(--card);
+    padding: 24px 24px;
+    background: #000;
 }
 
 .navbar__logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
     margin-right: 32px;
+}
+
+.navbar__logo-img {
+    height: 28px;
+    width: auto;
+    margin-right: 8px;
 }
 
 .navbar__links {
@@ -44,4 +49,5 @@
 .btn-primary {
     background: var(--accent);
     color: #fff;
+    border-radius: 20px;
 }
