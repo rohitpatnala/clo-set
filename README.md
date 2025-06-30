@@ -86,7 +86,22 @@ It showcases a front-end application that fetches a catalog of items, lets users
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run **dev**
 
    ```
+
+### Usage
+
+- Use the search bar to find items by title or creator.
+
+- Toggle pricing checkboxes or adjust the price slider to refine your results.
+
+- Open the Sort by dropdown to reorder items.
+
+- Scroll down to trigger infinite loading.
+
+### Live Demo
+
+👉 Check out the live version on Vercel: [https://clo-set-kg9t.vercel.app/]
