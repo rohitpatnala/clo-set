@@ -29,7 +29,7 @@ const StorePage: React.FC = () => {
   const [sortBy, setSortBy] = useState<SortOption>("name");
   const [isLoading, setIsLoading] = useState(true);
 
-  // 1️⃣ Fetch data once on mount
+  // Fetch data once on mount
   useEffect(() => {
     getAllItems()
       .then((data) => setAllItems(data))
@@ -37,7 +37,7 @@ const StorePage: React.FC = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  // 2️⃣ Apply filters
+  // Apply filters
   const filtered = useMemo(() => {
     return allItems.filter((item) => {
       // pricing filter
@@ -71,7 +71,7 @@ const StorePage: React.FC = () => {
     });
   }, [allItems, pricingOptions, searchTerm, activeCat, priceRange]);
 
-  // 3️⃣ Sort
+  // Sort
   const sorted = useMemo(() => {
     const copy = [...filtered];
     switch (sortBy) {
@@ -88,7 +88,7 @@ const StorePage: React.FC = () => {
     return copy;
   }, [filtered, sortBy]);
 
-  // 4️⃣ Paginate
+  // Paginate
   const paginatedItems = useMemo(
     () => sorted.slice(0, page * PAGE_SIZE),
     [sorted, page]
