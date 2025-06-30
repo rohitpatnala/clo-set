@@ -88,7 +88,7 @@ It showcases a front-end application that fetches a catalog of items, lets users
 3. **Run the development server**
 
    ```bash
-   npm run **dev**
+   npm run dev
 
    ```
 
@@ -104,4 +104,4 @@ It showcases a front-end application that fetches a catalog of items, lets users
 
 ### Live Demo
 
-👉 Check out the live version on Vercel: [https://clo-set-kg9t.vercel.app/]
+👉 Check out the live version on Vercel: https://clo-set-kg9t.vercel.app/
