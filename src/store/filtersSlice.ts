@@ -18,7 +18,7 @@ export interface FiltersState {
   priceRange: PriceRange;
 }
 
-const initialState: FiltersState = {
+export const initialState: FiltersState = {
   pricingOptions: {
     paid: false,
     free: false,

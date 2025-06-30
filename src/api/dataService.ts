@@ -3,7 +3,7 @@ import type { Item } from '../components/ContentCard';
 
 const BASE = 'https://closet-recruiting-api.azurewebsites.net';
 
-interface RawItem {
+export interface RawItem {
   id: string;
   creator: string;
   title: string;
