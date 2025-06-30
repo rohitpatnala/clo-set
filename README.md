@@ -1,12 +1,92 @@
-# React + Vite
+# CLO-SET Connect Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A modern, responsive content marketplace to browse, filter, and sort digital assets.
 
-Currently, two official plugins are available:
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white)](https://clo-set-kg9t.vercel.app/) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](#license)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [Purpose](#purpose)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Live Demo](#live-demo)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Purpose
+
+This project was developed as part of an assessment for **CLO-SET Connect**.  
+It showcases a front-end application that fetches a catalog of items, lets users:
+
+- 🔍 Search by title or creator
+- ⚖️ Filter by pricing options (Paid / Free / View-Only) and price range
+- 📊 Sort alphabetically or by price (low ↔ high)
+- 🔄 Infinite scroll with loading spinner
+- 🌙 Dark theme and polished UI interactions
+
+---
+
+## Features
+
+- **Dynamic Filtering**
+  - Toggle paid, free, and view-only items
+  - Dual-thumb price-range slider
+- **Search & Sort**
+  - Debounced keyword search
+  - Sort dropdown: Name, Highest Price, Lowest Price
+- **Infinite Scrolling**
+  - Auto-load more content as you scroll
+- **Responsive Design**
+  - 1–4 column grid on different breakpoints
+- **Dark Theme**
+  - Global CSS variables and modern UI touches (hover shines, glows)
+
+---
+
+## Tech Stack
+
+- **Framework:** React + Vite
+- **State:** Redux Toolkit
+- **Data Fetching:** Axios
+- **Styling:** Plain CSS (no Tailwind) with CSS variables
+- **Deployment:** Vercel
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16+) & npm
+- Git
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/rohitpatnala/clo-set.git
+   cd clo-set
+
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run **dev**
+
+   ```
