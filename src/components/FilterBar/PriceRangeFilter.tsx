@@ -5,7 +5,7 @@ import { setPriceRange } from "../../store/filtersSlice";
 import "../../styles/PriceRangeFilter.css";
 
 const MIN = 0;
-const MAX = 2000;
+const MAX = 999;
 
 export default function PriceRangeFilter() {
   const dispatch = useDispatch<AppDispatch>();

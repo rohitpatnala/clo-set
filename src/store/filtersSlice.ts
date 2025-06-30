@@ -26,7 +26,7 @@ const initialState: FiltersState = {
   },
   searchTerm: '',
   page: 1,
-  priceRange: { min: 0, max: 2000 },
+  priceRange: { min: 0, max: 999 },
 };
 
 const filtersSlice = createSlice({

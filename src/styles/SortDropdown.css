@@ -1,0 +1,20 @@
+.sort-dropdown-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.sort-label {
+    font-size: 0.875rem;
+    color: var(--fg);
+}
+
+.sort-dropdown {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    background: var(--card-bg);
+    color: var(--fg);
+    border: 1px solid var(--muted);
+    border-radius: 4px;
+}

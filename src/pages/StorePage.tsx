@@ -12,6 +12,7 @@ import PriceRangeFilter from "../components/FilterBar/PriceRangeFilter";
 import ResetButton from "../components/FilterBar/ResetButton";
 import ContentGrid from "../components/ContentGrid";
 import InfiniteScroller from "../components/InfiniteScroller";
+import SortDropdown, { SortOption } from "../components/FilterBar/SortDropdown";
 
 import "../styles/StorePage.css";
 
@@ -25,8 +26,10 @@ const StorePage: React.FC = () => {
   );
   const [allItems, setAllItems] = useState<Item[]>([]);
   const [activeCat, setActiveCat] = useState<string>("All");
-
+  const [sortBy, setSortBy] = useState<SortOption>("name");
   const [isLoading, setIsLoading] = useState(true);
+
+  // 1️⃣ Fetch data once on mount
   useEffect(() => {
     getAllItems()
       .then((data) => setAllItems(data))
@@ -34,54 +37,65 @@ const StorePage: React.FC = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  // Fetch data once on mount
-  useEffect(() => {
-    getAllItems()
-      .then(setAllItems)
-      .catch((err) => console.error("Failed to load items:", err));
-  }, []);
-
-  // Apply all filters and pagination
-  const filteredItems = useMemo(() => {
-    return allItems
-      .filter((item) => {
-        // Pricing filter
-        const { paid, free, viewOnly } = pricingOptions;
-        if (paid || free || viewOnly) {
-          if (item.pricing === "paid" && !paid) return false;
-          if (item.pricing === "free" && !free) return false;
-          if (item.pricing === "viewOnly" && !viewOnly) return false;
-        }
-        // Keyword search
-        const term = searchTerm.trim().toLowerCase();
-        if (term) {
-          const inTitle = item.title.toLowerCase().includes(term);
-          const inUser = item.userName.toLowerCase().includes(term);
-          if (!inTitle && !inUser) return false;
-        }
-        // Category filter (if you have category on Item)
+  // 2️⃣ Apply filters
+  const filtered = useMemo(() => {
+    return allItems.filter((item) => {
+      // pricing filter
+      const { paid, free, viewOnly } = pricingOptions;
+      if (paid || free || viewOnly) {
+        if (item.pricing === "paid" && !paid) return false;
+        if (item.pricing === "free" && !free) return false;
+        if (item.pricing === "viewOnly" && !viewOnly) return false;
+      }
+      // search term
+      const term = searchTerm.trim().toLowerCase();
+      if (term) {
         if (
-          activeCat !== "All" &&
-          // @ts-ignore: assuming item.category exists
-          (item as any).category !== activeCat
+          !item.title.toLowerCase().includes(term) &&
+          !item.userName.toLowerCase().includes(term)
         ) {
           return false;
         }
-        // Price range filter
-        if (item.price != null) {
-          if (item.price < priceRange.min || item.price > priceRange.max) {
-            return false;
-          }
+      }
+      // category filter
+      if (activeCat !== "All" && (item as any).category !== activeCat) {
+        return false;
+      }
+      // price range filter
+      if (item.price != null) {
+        if (item.price < priceRange.min || item.price > priceRange.max) {
+          return false;
         }
-        return true;
-      })
-      .slice(0, page * PAGE_SIZE);
-  }, [allItems, pricingOptions, searchTerm, activeCat, priceRange, page]);
+      }
+      return true;
+    });
+  }, [allItems, pricingOptions, searchTerm, activeCat, priceRange]);
 
-  const hasMore = filteredItems.length < allItems.length;
-  const loadMore = () => {
-    if (hasMore) dispatch(incrementPage());
-  };
+  // 3️⃣ Sort
+  const sorted = useMemo(() => {
+    const copy = [...filtered];
+    switch (sortBy) {
+      case "priceDesc":
+        copy.sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
+        break;
+      case "priceAsc":
+        copy.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+        break;
+      case "name":
+      default:
+        copy.sort((a, b) => a.title.localeCompare(b.title));
+    }
+    return copy;
+  }, [filtered, sortBy]);
+
+  // 4️⃣ Paginate
+  const paginatedItems = useMemo(
+    () => sorted.slice(0, page * PAGE_SIZE),
+    [sorted, page]
+  );
+
+  const hasMore = paginatedItems.length < filtered.length;
+  const loadMore = () => hasMore && dispatch(incrementPage());
 
   return (
     <>
@@ -117,11 +131,15 @@ const StorePage: React.FC = () => {
           <PriceRangeFilter />
           <ResetButton />
         </div>
+        <SortDropdown
+          value={sortBy}
+          onChange={(newSort) => setSortBy(newSort)}
+        />
       </section>
 
       <section className="grid-section container">
         <InfiniteScroller hasMore={hasMore} loadMore={loadMore}>
-          <ContentGrid items={filteredItems} loading={isLoading} />
+          <ContentGrid items={paginatedItems} loading={isLoading} />
         </InfiniteScroller>
       </section>
     </>

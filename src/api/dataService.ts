@@ -34,8 +34,8 @@ function mapRawToItem(raw: RawItem): Item {
     pricing,
     price: raw.price,
     imageUrl: raw.imagePath,
-    views: randomInt(20, 500),   // add a random view count
-    likes: randomInt(10, 180),   // add a random like count
+    views: randomInt(800, 5000),   // add a random view count
+    likes: randomInt(10, 400),   // add a random like count
   };
 }
 

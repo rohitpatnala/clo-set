@@ -27,7 +27,7 @@
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: hover-shine 1s ease-in-out forwards;
+    animation: hover-shine 1.8s ease-in-out forwards;
 }
 
 @keyframes hover-shine {
@@ -119,6 +119,32 @@
     flex-wrap: wrap;
     gap: 16px;
     align-items: center;
+}
+
+/*————————————————————————————————————————————————————————————————————————————
+    Sort Dropdown
+  ————————————————————————————————————————————————————————————————————————————*/
+
+.sort-dropdown-container {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.sort-label {
+    margin-right: 8px;
+    font-size: 0.875rem;
+    color: var(--fg);
+}
+
+.sort-dropdown {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    background: var(--card-bg);
+    color: var(--fg);
+    border: 1px solid var(--muted);
+    border-radius: 4px;
 }
 
 /*————————————————————————————————————————————————————————————————————————————
